@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}">One Click</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'productos' %}">Productos</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contacto' %}">Contacta con nosotros</a>
+                </li>
+
+                {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'cerrar_sesion' %}">Cerrar sesion</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Iniciar sesion</a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Registrarse</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link disabled">Disabled</a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- <nav>
+    <ul>
+        <li><a href="{% url 'home' %}">Inicio</a></li>
+        <li><a href="{% url 'productos' %}">Productos</a></li>
+        {% if request.user.is_authenticated %}
+        <li><a href="{% url 'cerrar_sesion' %}">Cerrar sesion</a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}">Iniciar sesion</a></li>
+        {% endif %}
+    </ul>
+</nav> -->
