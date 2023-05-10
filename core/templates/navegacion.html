@@ -11,17 +11,17 @@
                     <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Inicio</a>
                 </li>
 
-                {% for group in request.user.groups.all %}
-                {% if group.name == 'Consumidor' %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'productos' %}">Productos</a>
                 </li>
-                {% endif %}
-                {% endfor %}
 
+                {% for group in request.user.groups.all %}
+                {% if group.name == 'Consumidor' %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'carrito' %}">Carrito</a>
                 </li>
+                {% endif %}
+                {% endfor %}
 
                 {% if request.user.is_authenticated %}
                 <li class="nav-item">

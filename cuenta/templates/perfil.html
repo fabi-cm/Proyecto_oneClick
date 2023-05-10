@@ -11,23 +11,53 @@
 <h1>{{titulo}}:</h1>
 <hr>
 {% if request.user.is_authenticated %}
-<div class="card" style="width: 18rem;">
-    <img class="card-img-top" src={{ user.perfil.img.url }} alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title text-primary">@{{ user.username | upper }}</h5>
-      <p class="card-text">{{ user.perfil.bio }}</p>
+<div class="row">
+  <!-- perfil -->
+  <div class="col-sm-3">
+    <div class="card">
+      <img class="card-img-top" src={{ user.perfil.img.url }} alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title text-primary">@{{ user.username | upper }}</h5>
+        <p class="card-text">{{ user.perfil.bio }}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Information</li>
+        <li class="list-group-item">Lista de productos</li>
+        <li class="list-group-item">Historial de ventas</li>
+      </ul>
+      <div class="card-body">
+        <a href="{% url 'home' %}" class="card-link btn btn-primary float-left">Home</a>
+        <a href="{% url 'cerrar_sesion' %}" class="card-link btn btn-danger float-right">Cerrar sesion</a>
+      </div>
     </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Information</li>
-      <li class="list-group-item">Lista de productos</li>
-      <li class="list-group-item">Historial de ventas</li>
-    </ul>
-    <div class="card-body">
-      <a href="#" class="card-link">Cerrar sesion</a>
-      <a href="#" class="card-link">Home</a>
+  </div>
+
+  <!-- contenido de informacion ventas etc -->
+  <div class="col-sm-9">
+
+    <div class="card text-center">
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+          <li class="nav-item">
+            <a class="nav-link " href="#">Informacion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Mis productos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Mis ventas</a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
     </div>
+
+  </div>
 </div>
+
 {% endif %}
-
-
 {% endblock %}

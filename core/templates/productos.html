@@ -30,7 +30,11 @@
                     <p class="card-text float-left"><strong>Estado: </strong>Agotado</p>
                     {% endif%}
 
-                    <a href="#" class="btn btn-primary">Agregar carrito</a>
+                    {% for group in request.user.groups.all %}
+                    {% if group.name == 'Consumidor' %}
+                    <a href="{% url 'carrito' %}" class="btn btn-primary">Agregar carrito</a>
+                    {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
