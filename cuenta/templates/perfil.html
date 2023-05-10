@@ -1,0 +1,33 @@
+<!-- Extencion necesaria de base.html -->
+{% extends 'base.html' %}
+
+<!-- Nombre de la pagina -->
+{% block title %}
+{{titulo}}
+{% endblock %}
+
+<!-- Contenido de la pagina -->
+{% block content %}
+<h1>{{titulo}}:</h1>
+<hr>
+{% if request.user.is_authenticated %}
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src={{ user.perfil.img.url }} alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title text-primary">@{{ user.username | upper }}</h5>
+      <p class="card-text">{{ user.perfil.bio }}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Information</li>
+      <li class="list-group-item">Lista de productos</li>
+      <li class="list-group-item">Historial de ventas</li>
+    </ul>
+    <div class="card-body">
+      <a href="#" class="card-link">Cerrar sesion</a>
+      <a href="#" class="card-link">Home</a>
+    </div>
+</div>
+{% endif %}
+
+
+{% endblock %}

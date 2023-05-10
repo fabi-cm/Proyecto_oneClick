@@ -8,11 +8,6 @@ def home(request):
                'saludo': 'Hola desde Home'}
     return render(request, 'home.html', context)
 
-@login_required
-def productos(request):
-    context = {'titulo': 'Productos'}
-    return render(request, 'productos.html',context)
-
 def cerrar_sesion(request):
     logout(request)
     return redirect('home')

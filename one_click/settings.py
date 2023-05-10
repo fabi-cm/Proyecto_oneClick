@@ -28,7 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -45,9 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #nuevas apps
-    'cuenta.apps.CuentaConfig',
+    'cuenta.apps.CuentaConfig', # perfil
     'core',
     'contacto',
+    'producto',
+    'carrito',
 
 ]
 
@@ -78,6 +79,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'carrito.context_processor.total_carrito',
             ],
         },
     },
@@ -139,5 +141,9 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Variable de redireccion de login y logout
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'perfil'
 LOGOUT_REDIRECT_URL = 'home'
+
+#Definir la carpeta media files:
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
